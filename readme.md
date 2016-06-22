@@ -12,3 +12,6 @@ i2c mode is used to connect ks103 with raspberrypi. You can connect the only i2c
 ks103, several ks103 can connected with a parallel mode and distinguished each other at different 
 addresses.
 
+## about me
+
+You can connect with me by e-mail: dicksonliuming@gmail.com or follow my Github: PWESiberiaBear
