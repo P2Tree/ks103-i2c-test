@@ -27,11 +27,13 @@ typedef unsigned char u8_t;
 #define USAGE_MESSAGE \
         "Usage: \n" \
         " '%s -d [addr]'  " \
-        " to get distance from ks103 \n" \
+        " to get distance from ks103, like: ./ks103-i2c-test -d 0x74 \n" \
         " '%s -c [addr] [new addr]'  " \
-        " to change ks103 directory  \n" \
-        " '%s r [addr] [register]'  " \
-        " to read value from [register] \n" \
+        " to change ks103 directory, like: ./ks103-i2c-test -c 0x74 0x75\n" \
+        " '%s -r [addr] [register]'  " \
+        " to read value from [register]\n" \
+        " '%s -w [addr] [register] [value]'  " \
+        " to write value to [register]\n" \
         ""
 
 static u32_t set_i2c_register(u32_t fd, u8_t addr, u8_t reg, u8_t value) {
@@ -127,6 +129,7 @@ static u8_t change_directory(u32_t fd, u8_t addr, u8_t new_addr) {
     return 0;
 
 }
+
 int main(int argc, char const *argv[]) {
     int fd;
 
@@ -135,6 +138,7 @@ int main(int argc, char const *argv[]) {
          printf("i2c open error\n");
          exit(1);
      }
+     printf("open i2c port success, fd = %d\n", fd);
 
      // to get the distance from the i2c device which user giving address 
      if(3 == argc && !strcmp(argv[1], "-d")) {
